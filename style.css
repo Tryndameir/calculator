@@ -23,7 +23,6 @@ body {
     padding: 10px;
     justify-content: space-around;
     background-color: rgb(40, 98, 121);
-    
 }
 
 .button {
@@ -33,7 +32,7 @@ body {
     font-weight: 500;
     border: solid;
     border-color: black;;
-    border-width: 1px;
+    border-width: 3px;
     text-align: center;
     line-height: 75px;
     color: white;
