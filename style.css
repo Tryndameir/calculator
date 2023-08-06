@@ -12,7 +12,7 @@ body {
 
 .container {
     display: flex;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     max-width: 450px;
     height: 600px;
     flex-wrap: wrap;
@@ -22,7 +22,7 @@ body {
     margin-top: 45px;
     padding: 10px;
     justify-content: space-around;
-    background-color: grey;
+    background-color: rgb(40, 98, 121);
     
 }
 
@@ -47,24 +47,28 @@ body {
     display: grid;
     flex-direction: column;
     text-align: right;
+    background-color: white;
 }
 
 .solution {
     font-size: 30px;
-    background-color: red;
-    color: white;
+    color: black;
     align-self:flex-end;
     justify-self: right;
     font-size: 40px;
-    margin-top: 15px;
+    margin-top: 40px;
 }
 
 .history {
     font-size: 20px;
-    color: white;
+    color: grey;
     justify-self: baseline;
-    background-color: green;
-    
     align-self: flex-end;
     justify-self: end;
+}
+
+.line {
+    height: 2px;
+    background: grey;
+    align-self:flex-end;
 }
