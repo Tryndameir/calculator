@@ -36,6 +36,7 @@ body {
     text-align: center;
     line-height: 75px;
     color: white;
+    transition: all 0.5s;
 }
 
 .display {
@@ -70,4 +71,9 @@ body {
     height: 2px;
     background: grey;
     align-self:flex-end;
+}
+
+.hovered {
+    border: solid;
+    border-color: yellow;
 }
