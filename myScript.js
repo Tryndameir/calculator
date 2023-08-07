@@ -5,6 +5,8 @@ const solution = document.querySelector('.solution');
 const history = document.querySelector('.history');
 const add = document.querySelector('.add');
 const num = document.querySelectorAll('.num');
+let operator = "";
+const equal = document.querySelector('.equal');
 
 
 // This section is for mouse hovering style changes
@@ -16,6 +18,7 @@ const num = document.querySelectorAll('.num');
         clear.addEventListener('click', () => {
             solution.innerText = "";
             history.innerText = "";
+            temp = "";
         })
     })
 
@@ -26,6 +29,7 @@ const num = document.querySelectorAll('.num');
         clear.addEventListener('click', () => {
             solution.innerText = "";
             history.innerText = "";
+            temp = "";
         })
     })
 ///////////////////////////////////////////////////////////////////////////////////////////////    
@@ -37,23 +41,12 @@ const num = document.querySelectorAll('.num');
 clear.addEventListener('click', () => {
     solution.innerText = "";
     history.innerText = "";
+    temp = "";
 })
 ///////////////////////////////////////////
 
 
-// function to add numbers
-///////////////////////////////////////////
-const sum = function (...args) {
-    let sum = 0;
-    for (let i = 0; i < args; i++)
-    {
-        sum += args[i];
-    }
-    return sum;
-}
-//////////////////////////////////////////
-
-// Event Listener for when a number is clicked
+// Event Listener for when a number is clicked. Show numbers in the display.
 ///////////////////////////////////////////
 num.forEach(num => {
     num.addEventListener('click', () => {
@@ -63,8 +56,42 @@ num.forEach(num => {
         div.innerText = temp;
         solution.innerText += temp;
         history.innerText += temp;
-        //display.appendChild(div);
+        console.log(temp);
         })
 })
-
 ///////////////////////////////////////////
+
+
+// function to add numbers
+////////////////////////////////////////////////////////////////////////////////////////////////////
+const sum = function (a, b) {
+    let sum = 0;
+    solution.innerText = solution.innerText.replace("+", ","); // Replaces the '+' sign with a comma
+    let solutionArray = solution.innerText.split(",");
+    l = solutionArray.length;
+    for (let i = 0; i < l; i++)
+    {
+        sum += solutionArray[i];
+    }
+    solution.innerText = sum;
+    history.innerText = (history.innerText + " = " + sum);
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Event listener for the add button
+//////////////////////////////////////////
+add.addEventListener('click', () => {
+    operator = "add";
+    solution.innerText += add.innerText;
+    history.innerText += add.innerText;
+})
+//////////////////////////////////////////
+
+
+// Function for equal sign to execute operator
+//////////////////////////////////////////
+equal.addEventListener('click', () => {
+    if (operator == 'add')
+    { sum(); }
+})
