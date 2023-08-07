@@ -5,7 +5,6 @@ const solution = document.querySelector('.solution');
 const history = document.querySelector('.history');
 const add = document.querySelector('.add');
 const num = document.querySelectorAll('.num');
-let  = document.createElement('p');
 
 
 // This section is for mouse hovering style changes
@@ -60,9 +59,11 @@ num.forEach(num => {
     num.addEventListener('click', () => {
         let temp = num.innerText;
         console.log(temp);
-        let p = document.createElement('p');
-        p = temp;
-        display.appendChild(p);
+        let div = document.createElement('div');
+        div.innerText = temp;
+        solution.innerText += temp;
+        history.innerText += temp;
+        //display.appendChild(div);
         })
 })
 
