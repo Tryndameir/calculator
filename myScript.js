@@ -7,7 +7,9 @@ const add = document.querySelector('.add');
 const num = document.querySelectorAll('.num');
 let operator = "";
 const equal = document.querySelector('.equal');
-
+let x = 0;
+let y = 0;
+let temp = 0;
 
 // This section is for mouse hovering style changes
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,7 +58,8 @@ num.forEach(num => {
         div.innerText = temp;
         solution.innerText += temp;
         history.innerText += temp;
-        console.log(temp);
+        console.log("x is: " + x);
+        console.log("y is: " + y);
         })
 })
 ///////////////////////////////////////////
@@ -65,16 +68,24 @@ num.forEach(num => {
 // function to add numbers
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const sum = function (a, b) {
-    let sum = 0;
+    let total = 0;
+    let x = temp;
+    let y = temp;
     solution.innerText = solution.innerText.replace("+", ","); // Replaces the '+' sign with a comma
     let solutionArray = solution.innerText.split(",");
+    parseInt(solutionArray);
     l = solutionArray.length;
+    console.log(solutionArray);
     for (let i = 0; i < l; i++)
     {
-        sum += solutionArray[i];
+        parseInt(solutionArray[i]);
+        parseInt(total);
+        total += solutionArray[i];
     }
-    solution.innerText = sum;
-    history.innerText = (history.innerText + " = " + sum);
+    console.log(solutionArray);
+    console.log(total);
+    console.log("x is a: " + typeof x);
+    console.log("x: " + x);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
