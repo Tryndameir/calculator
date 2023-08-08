@@ -55,11 +55,10 @@ num.forEach(num => {
     num.addEventListener('click', () => {
         if (solution.innerText.length >= 14) {return;}
         else {
-        temp = num.innerText;
-        solution.innerText += temp;
-        history.innerText += temp; 
-        console.log(solution.innerText);
-        }
+                temp = num.innerText;
+                solution.innerText += temp;
+                history.innerText += temp; 
+             }
         })
 })
 ///////////////////////////////////////////
@@ -69,21 +68,27 @@ num.forEach(num => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const sum = function (...args) {
     let total = 0;
-    let x = solution.innerText;
-    let y = history.innerText;
+    
+    x = solution.innerText;
+    y = history.innerText;
     
     x = solution.innerText.replaceAll("+", ","); // Replaces the '+' sign with a comma
-    x = x.split(",");
-    x = x.map(Number);
-    console.log(x);
+    y = solution.innerText.replaceAll("", ",");
+    x = x.split(","); //turns the string into an array
+    y = y.split(",");
+    console.log(y);
+    console.log("Length: " + y.length);
+    x = x.map(Number); //turns an array of strings into an array of integers
     l = x.length;
     for (let i = 0; i < l; i++)
     {
         total += x[i];
     }
     solution.innerText = total;
-    history.innerText += " = " + total;
-    console.log(total);
+    y = y.toString();
+    y = y.replaceAll(",", "");
+    console.log("Y is now: " + y);
+    history.innerText = y + " = " + total;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -93,7 +98,6 @@ const sum = function (...args) {
 add.addEventListener('click', () => {
     operator = "add";
     let arr = solution.innerText.split("");
-    console.log(arr[arr.length-1]);
     if (arr[arr.length-1] == "+") {return;}
     
         else {
