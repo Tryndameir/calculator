@@ -4,6 +4,7 @@ const clear = document.querySelector('.clear');
 const solution = document.querySelector('.solution');
 const history = document.querySelector('.history');
 const add = document.querySelector('.add');
+const subtract = document.querySelector('.subtract');
 const num = document.querySelectorAll('.num');
 let operator = "";
 const equal = document.querySelector('.equal');
@@ -93,6 +94,38 @@ const sum = function (...args) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// function to subtract numbers
+////////////////////////////////////////////////////////////////////////////////////////////////////
+const minus = function (...args) {
+    let total = 0;
+    
+    x = solution.innerText;
+    y = history.innerText;
+    
+    x = solution.innerText.replaceAll("-", ","); // Replaces the '-' sign with a comma
+    y = solution.innerText.replaceAll("", ",");
+    x = x.split(","); //turns the string into an array
+    y = y.split(",");
+    console.log(y);
+    console.log("Length: " + y.length);
+    x = x.map(Number); //turns an array of strings into an array of integers
+    l = x.length;
+    console.log(x);
+    for (let i = 0; i < l-1; i++)
+    {
+        console.log(x[i]);
+        total = x[i] - x[i+1];
+    }
+    console.log("Minus total: " + total);
+    solution.innerText = total;
+    y = y.toString();
+    y = y.replaceAll(",", "");
+    console.log("Y is now: " + y);
+    history.innerText = y + " = " + total;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 // Event listener for the add button
 //////////////////////////////////////////
 add.addEventListener('click', () => {
@@ -108,10 +141,28 @@ add.addEventListener('click', () => {
 //////////////////////////////////////////
 
 
+
+//Event listener for the subtract button
+//////////////////////////////////////////
+subtract.addEventListener('click', () => {
+   operator = "subtract";
+    let arr = solution.innerText.split("");
+    if (arr[arr.length-1] == "-") {return;}
+    
+        else {
+            solution.innerText += subtract.innerText;
+            history.innerText += subtract.innerText;
+            }
+})
+//////////////////////////////////////////
+
+
+
 // Function for equal sign to execute operator
 //////////////////////////////////////////////
 equal.addEventListener('click', () => {
-    if (operator == 'add')
-    { sum(); }
+    if (operator == 'add'){ sum(); }
+
+    else if (operator == 'subtract') { minus(); }
 })
 //////////////////////////////////////////////
