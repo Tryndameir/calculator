@@ -94,8 +94,9 @@ const sum = function (...args) {
 // function to subtract numbers
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const minus = function (...args) {
+    solution.innerText = solution.innerText;
+
     let total = 0;
-    
     x = solution.innerText;
     y = history.innerText;
     x = solution.innerText.replaceAll("-", ","); // Replaces the '-' sign with a comma
@@ -103,10 +104,13 @@ const minus = function (...args) {
     x = x.split(","); //turns the string into an array
     y = y.split(",");
     x = x.map(Number); //turns an array of strings into an array of integers
+    console.log("x is: " + x);
     l = x.length;
-    for (let i = 0; i < l-1; i++)
+    console.log("length of x is: " + l);
+    for (let i = 0; i < l - 1; i++)
     {
         total = x[i] - x[i+1];
+        console.log("total is now: " + total)
     }
     console.log("total is: " + total);
     solution.innerText = total;
@@ -122,8 +126,6 @@ const minus = function (...args) {
 add.addEventListener('click', () => {
     operator = "add";
     console.log(operator);
-    if (operator == "subtract"){minus();}
-    if (operator == "add"){sum();}
     let arr = solution.innerText.split("");
     if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;}
     
@@ -131,6 +133,7 @@ add.addEventListener('click', () => {
             solution.innerText += add.innerText;
             history.innerText += add.innerText;
             }
+            console.log(history.innerText);
 })
 //////////////////////////////////////////
 
@@ -139,16 +142,14 @@ add.addEventListener('click', () => {
 //Event listener for the subtract button
 //////////////////////////////////////////
 subtract.addEventListener('click', () => {
+    operator = "subtract";
+    console.log(operator);
     let arr = solution.innerText.split("");
-    if (arr[arr.length-1] == "-" || arr[arr.length-1] == "+") {return;}
+    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;}
     
         else {
             solution.innerText += subtract.innerText;
             history.innerText += subtract.innerText;
-            operator = "subtract";
-            console.log(operator);
-            if (operator == "subtract"){minus();}
-            if (operator == "add"){sum();}
             }
 })
 //////////////////////////////////////////
