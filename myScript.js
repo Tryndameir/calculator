@@ -53,13 +53,9 @@ clear.addEventListener('click', () => {
 num.forEach(num => {
     num.addEventListener('click', () => {
         let temp = num.innerText;
-        console.log(temp);
         let div = document.createElement('div');
-        div.innerText = temp;
         solution.innerText += temp;
         history.innerText += temp;
-        console.log("x is: " + x);
-        console.log("y is: " + y);
         })
 })
 ///////////////////////////////////////////
@@ -67,25 +63,28 @@ num.forEach(num => {
 
 // function to add numbers
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-const sum = function (a, b) {
+const sum = function (...args) {
     let total = 0;
-    let x = temp;
-    let y = temp;
-    solution.innerText = solution.innerText.replace("+", ","); // Replaces the '+' sign with a comma
-    let solutionArray = solution.innerText.split(",");
-    parseInt(solutionArray);
-    l = solutionArray.length;
-    console.log(solutionArray);
+    let x = solution.innerText;
+    let y = history.innerText;
+    
+    x = solution.innerText.replace("+", ","); // Replaces the '+' sign with a comma
+    y = solution.innerText.replace("+", ","); // Replaces the '+' sign with a comma
+
+    x = x.split(",");
+    y = y.split(",");
+
+    x = x.map(Number);
+    y = y.map(Number);
+
+    l = x.length;
     for (let i = 0; i < l; i++)
     {
-        parseInt(solutionArray[i]);
-        parseInt(total);
-        total += solutionArray[i];
+        total += x[i];
     }
-    console.log(solutionArray);
+    solution.innerText = total;
+    history.innerText = total;
     console.log(total);
-    console.log("x is a: " + typeof x);
-    console.log("x: " + x);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
