@@ -73,7 +73,6 @@ const sum = function (...args) {
     
     x = solution.innerText;
     y = history.innerText;
-    
     x = solution.innerText.replaceAll("+", ","); // Replaces the '+' sign with a comma
     y = solution.innerText.replaceAll("", ",");
     x = x.split(","); //turns the string into an array
@@ -99,7 +98,6 @@ const minus = function (...args) {
     
     x = solution.innerText;
     y = history.innerText;
-    
     x = solution.innerText.replaceAll("-", ","); // Replaces the '-' sign with a comma
     y = solution.innerText.replaceAll("", ",");
     x = x.split(","); //turns the string into an array
@@ -110,6 +108,7 @@ const minus = function (...args) {
     {
         total = x[i] - x[i+1];
     }
+    console.log("total is: " + total);
     solution.innerText = total;
     y = y.toString();
     y = y.replaceAll(",", "");
@@ -122,6 +121,7 @@ const minus = function (...args) {
 //////////////////////////////////////////
 add.addEventListener('click', () => {
     operator = "add";
+    console.log(operator);
     if (operator == "subtract"){minus();}
     if (operator == "add"){sum();}
     let arr = solution.innerText.split("");
@@ -139,13 +139,16 @@ add.addEventListener('click', () => {
 //Event listener for the subtract button
 //////////////////////////////////////////
 subtract.addEventListener('click', () => {
-   operator = "subtract";
     let arr = solution.innerText.split("");
-    if (arr[arr.length-1] == "-") {return;}
+    if (arr[arr.length-1] == "-" || arr[arr.length-1] == "+") {return;}
     
         else {
             solution.innerText += subtract.innerText;
             history.innerText += subtract.innerText;
+            operator = "subtract";
+            console.log(operator);
+            if (operator == "subtract"){minus();}
+            if (operator == "add"){sum();}
             }
 })
 //////////////////////////////////////////
