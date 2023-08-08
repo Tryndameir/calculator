@@ -10,6 +10,7 @@ const equal = document.querySelector('.equal');
 let x = 0;
 let y = 0;
 let temp = 0;
+let l = solution.innerText.length;
 
 // This section is for mouse hovering style changes
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,9 +53,12 @@ clear.addEventListener('click', () => {
 ///////////////////////////////////////////
 num.forEach(num => {
     num.addEventListener('click', () => {
+        if (solution.innerText.length >= 14) {return;}
+        else {
         temp = num.innerText;
         solution.innerText += temp;
-        history.innerText += temp;
+        history.innerText += temp; 
+        }
         })
 })
 ///////////////////////////////////////////
@@ -86,9 +90,12 @@ const sum = function (...args) {
 // Event listener for the add button
 //////////////////////////////////////////
 add.addEventListener('click', () => {
-    operator = "add";
-    solution.innerText += add.innerText;
-    history.innerText += add.innerText;
+    do {
+        operator = "add";
+        solution.innerText += add.innerText;
+        history.innerText += add.innerText;
+        }
+    while (solution.innerText[l-1] != "+");
 })
 //////////////////////////////////////////
 
