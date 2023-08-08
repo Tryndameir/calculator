@@ -58,6 +58,7 @@ num.forEach(num => {
         temp = num.innerText;
         solution.innerText += temp;
         history.innerText += temp; 
+        console.log(solution.innerText);
         }
         })
 })
@@ -90,12 +91,15 @@ const sum = function (...args) {
 // Event listener for the add button
 //////////////////////////////////////////
 add.addEventListener('click', () => {
-    do {
-        operator = "add";
-        solution.innerText += add.innerText;
-        history.innerText += add.innerText;
-        }
-    while (solution.innerText[l-1] != "+");
+    operator = "add";
+    let arr = solution.innerText.split("");
+    console.log(arr[arr.length-1]);
+    if (arr[arr.length-1] == "+") {return;}
+    
+        else {
+            solution.innerText += add.innerText;
+            history.innerText += add.innerText;
+            }
 })
 //////////////////////////////////////////
 
