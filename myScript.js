@@ -52,8 +52,7 @@ clear.addEventListener('click', () => {
 ///////////////////////////////////////////
 num.forEach(num => {
     num.addEventListener('click', () => {
-        let temp = num.innerText;
-        let div = document.createElement('div');
+        temp = num.innerText;
         solution.innerText += temp;
         history.innerText += temp;
         })
@@ -69,15 +68,9 @@ const sum = function (...args) {
     let y = history.innerText;
     
     x = solution.innerText.replaceAll("+", ","); // Replaces the '+' sign with a comma
-    //y = solution.innerText.replaceAll("+", ","); // Replaces the '+' sign with a comma
-
     x = x.split(",");
-    //y = y.split(",");
-
     x = x.map(Number);
-    //y = y.map(Number);
     console.log(x);
-
     l = x.length;
     for (let i = 0; i < l; i++)
     {
