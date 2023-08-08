@@ -92,7 +92,7 @@ const sum = function (...args) {
 
 
 // function to subtract numbers
-////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////  7-1-1
 const minus = function (...args) {
     solution.innerText = solution.innerText;
 
@@ -105,11 +105,13 @@ const minus = function (...args) {
     y = y.split(",");
     x = x.map(Number); //turns an array of strings into an array of integers
     console.log("x is: " + x);
-    l = x.length;
+    let l = x.length;
+    total = x[0];
     console.log("length of x is: " + l);
-    for (let i = 0; i < l - 1; i++)
-    {
-        total = x[i] - x[i+1];
+    for (let i = 0; i < l-1; i++)
+    {   
+        total = total;
+        total = total - x[i+1];
         console.log("total is now: " + total)
     }
     console.log("total is: " + total);
