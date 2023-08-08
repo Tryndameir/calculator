@@ -68,14 +68,15 @@ const sum = function (...args) {
     let x = solution.innerText;
     let y = history.innerText;
     
-    x = solution.innerText.replace("+", ","); // Replaces the '+' sign with a comma
-    y = solution.innerText.replace("+", ","); // Replaces the '+' sign with a comma
+    x = solution.innerText.replaceAll("+", ","); // Replaces the '+' sign with a comma
+    //y = solution.innerText.replaceAll("+", ","); // Replaces the '+' sign with a comma
 
     x = x.split(",");
-    y = y.split(",");
+    //y = y.split(",");
 
     x = x.map(Number);
-    y = y.map(Number);
+    //y = y.map(Number);
+    console.log(x);
 
     l = x.length;
     for (let i = 0; i < l; i++)
@@ -83,7 +84,7 @@ const sum = function (...args) {
         total += x[i];
     }
     solution.innerText = total;
-    history.innerText = total;
+    history.innerText += " = " + total;
     console.log(total);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
