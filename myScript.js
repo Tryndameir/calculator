@@ -5,6 +5,7 @@ const solution = document.querySelector('.solution');
 const history = document.querySelector('.history');
 const add = document.querySelector('.add');
 const subtract = document.querySelector('.subtract');
+const multiply = document.querySelector('.multiply');
 const num = document.querySelectorAll('.num');
 let operator = "";
 const equal = document.querySelector('.equal');
@@ -77,8 +78,6 @@ const sum = function (...args) {
     y = solution.innerText.replaceAll("", ",");
     x = x.split(","); //turns the string into an array
     y = y.split(",");
-    console.log(y);
-    console.log("Length: " + y.length);
     x = x.map(Number); //turns an array of strings into an array of integers
     l = x.length;
     for (let i = 0; i < l; i++)
@@ -88,7 +87,6 @@ const sum = function (...args) {
     solution.innerText = total;
     y = y.toString();
     y = y.replaceAll(",", "");
-    console.log("Y is now: " + y);
     history.innerText = y + " = " + total;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -106,21 +104,15 @@ const minus = function (...args) {
     y = solution.innerText.replaceAll("", ",");
     x = x.split(","); //turns the string into an array
     y = y.split(",");
-    console.log(y);
-    console.log("Length: " + y.length);
     x = x.map(Number); //turns an array of strings into an array of integers
     l = x.length;
-    console.log(x);
     for (let i = 0; i < l-1; i++)
     {
-        console.log(x[i]);
         total = x[i] - x[i+1];
     }
-    console.log("Minus total: " + total);
     solution.innerText = total;
     y = y.toString();
     y = y.replaceAll(",", "");
-    console.log("Y is now: " + y);
     history.innerText = y + " = " + total;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -130,8 +122,10 @@ const minus = function (...args) {
 //////////////////////////////////////////
 add.addEventListener('click', () => {
     operator = "add";
+    if (operator == "subtract"){minus();}
+    if (operator == "add"){sum();}
     let arr = solution.innerText.split("");
-    if (arr[arr.length-1] == "+") {return;}
+    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;}
     
         else {
             solution.innerText += add.innerText;
@@ -161,8 +155,11 @@ subtract.addEventListener('click', () => {
 // Function for equal sign to execute operator
 //////////////////////////////////////////////
 equal.addEventListener('click', () => {
+    console.log(operator);
     if (operator == 'add'){ sum(); }
 
     else if (operator == 'subtract') { minus(); }
+
+    else if (operator == 'multiply') {}
 })
 //////////////////////////////////////////////
