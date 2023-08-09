@@ -127,8 +127,6 @@ add.addEventListener('click', () => {
     console.log(previousOperator)
     if (previousOperator == "add") { sum(); }
     if (previousOperator == "subtract") { minus(); }
-    //if (operator == "") { operator = "add"; }
-    
     let arr = solution.innerText.split("");
     if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;} // If user enters 2 operators in a row do nothing. 
     
@@ -136,6 +134,7 @@ add.addEventListener('click', () => {
             solution.innerText += add.innerText;
             history.innerText += add.innerText;
             }
+            previousOperator = operator;
 })
 //////////////////////////////////////////
 
@@ -145,10 +144,10 @@ add.addEventListener('click', () => {
 //////////////////////////////////////////
 subtract.addEventListener('click', () => {
     operator = "subtract";
-    console.log(previousOperator);
-    if (operator == "add") { sum(); }
-    if (operator == "subtract") { minus(); }
-    //if (operator == "") { operator = "subtract"; }
+    console.log("previous operator: " + previousOperator);
+    console.log("operator: " + operator);
+    if (previousOperator == "add") { sum(); }
+    if (previousOperator == "subtract") { minus(); }
     let arr = solution.innerText.split("");
     if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;} // If user enters 2 operators in a row do nothing. 
     
@@ -156,6 +155,7 @@ subtract.addEventListener('click', () => {
             solution.innerText += subtract.innerText;
             history.innerText += subtract.innerText;
             }
+            previousOperator = operator;
 })
 //////////////////////////////////////////
 
