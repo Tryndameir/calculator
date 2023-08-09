@@ -104,17 +104,13 @@ const minus = function (...args) {
     x = x.split(","); //turns the string into an array
     y = y.split(",");
     x = x.map(Number); //turns an array of strings into an array of integers
-    console.log("x is: " + x);
     let l = x.length;
     total = x[0];
-    console.log("length of x is: " + l);
     for (let i = 0; i < l-1; i++)
     {   
         total = total;
         total = total - x[i+1];
-        console.log("total is now: " + total)
     }
-    console.log("total is: " + total);
     solution.innerText = total;
     y = y.toString();
     y = y.replaceAll(",", "");
@@ -126,16 +122,17 @@ const minus = function (...args) {
 // Event listener for the add button
 //////////////////////////////////////////
 add.addEventListener('click', () => {
-    operator = "add";
-    console.log(operator);
+    if (operator == "add") { sum(); }
+    if (operator == "subtract") { minus(); }
+    if (operator == "") {operator = "add";}
+    
     let arr = solution.innerText.split("");
-    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;}
+    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;} // If user enters 2 operators in a row do nothing. 
     
         else {
             solution.innerText += add.innerText;
             history.innerText += add.innerText;
             }
-            console.log(history.innerText);
 })
 //////////////////////////////////////////
 
@@ -147,7 +144,7 @@ subtract.addEventListener('click', () => {
     operator = "subtract";
     console.log(operator);
     let arr = solution.innerText.split("");
-    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;}
+    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;} // If user enters 2 operators in a row do nothing. 
     
         else {
             solution.innerText += subtract.innerText;
