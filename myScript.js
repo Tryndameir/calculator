@@ -26,6 +26,7 @@ let l = solution.innerText.length;
             solution.innerText = "";
             history.innerText = "";
             temp = "";
+            operator = "";
         })
     })
 
@@ -37,6 +38,7 @@ let l = solution.innerText.length;
             solution.innerText = "";
             history.innerText = "";
             temp = "";
+            operator = "";
         })
     })
 ///////////////////////////////////////////////////////////////////////////////////////////////    
@@ -49,6 +51,7 @@ clear.addEventListener('click', () => {
     solution.innerText = "";
     history.innerText = "";
     temp = "";
+    operator = "";
 })
 ///////////////////////////////////////////
 
@@ -141,6 +144,7 @@ const multiplication = function (...args) {
         total = total;
         total = x[i] * x[i+1];
     }
+    total = Math.round((total + Number.EPSILON) * 100) / 100; // equation to round numbers to 2 decimal places
     solution.innerText = total;
     y = y.toString();
     y = y.replaceAll(",", "");
@@ -170,6 +174,7 @@ const division = function (...args) {
         total = total;
         total = x[i] / x[i+1];
     }
+    total = Math.round((total + Number.EPSILON) * 100) / 100; // equation to round numbers to 2 decimal places
     solution.innerText = total;
     y = y.toString();
     y = y.replaceAll(",", "");
