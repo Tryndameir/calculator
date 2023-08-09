@@ -75,7 +75,7 @@ const sum = function (...args) {
     
     x = solution.innerText;
     y = history.innerText;
-    x = solution.innerText.replaceAll("+", ","); // Replaces the '+' sign with a comma
+    x = solution.innerText.replaceAll("+", ","); // Replaces the operator sign with a comma
     y = solution.innerText.replaceAll("", ",");
     x = x.split(","); //turns the string into an array
     y = y.split(",");
@@ -101,7 +101,7 @@ const minus = function (...args) {
     let total = 0;
     x = solution.innerText;
     y = history.innerText;
-    x = solution.innerText.replaceAll("-", ","); // Replaces the '-' sign with a comma
+    x = solution.innerText.replaceAll("-", ","); // Replaces the operator sign with a comma
     y = solution.innerText.replaceAll("", ",");
     x = x.split(","); //turns the string into an array
     y = y.split(",");
@@ -129,17 +129,46 @@ const multiplication = function (...args) {
     let total = 0;
     x = solution.innerText;
     y = history.innerText;
-    x = solution.innerText.replaceAll("x", ","); // Replaces the '-' sign with a comma
+    x = solution.innerText.replaceAll("x", ","); // Replaces the operator sign with a comma
     y = solution.innerText.replaceAll("", ",");
     x = x.split(","); //turns the string into an array
     y = y.split(",");
     x = x.map(Number); //turns an array of strings into an array of integers
     let l = x.length;
-    //total = x[0];
+    total = x[0];
     for (let i = 0; i < l-1; i++)
     {   
         total = total;
-        total = total * x[i+1];
+        total = x[i] * x[i+1];
+    }
+    solution.innerText = total;
+    y = y.toString();
+    y = y.replaceAll(",", "");
+    history.innerText = y + " = " + total;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// function to divide numbers
+////////////////////////////////////////////////////////////////////////////////////////////////////  7-1-1
+const division = function (...args) {
+    solution.innerText = solution.innerText;
+
+    let total = 0;
+    x = solution.innerText;
+    y = history.innerText;
+    x = solution.innerText.replaceAll("÷", ","); // Replaces the operator sign with a comma
+    y = solution.innerText.replaceAll("", ",");
+    x = x.split(","); //turns the string into an array
+    y = y.split(",");
+    x = x.map(Number); //turns an array of strings into an array of integers
+    let l = x.length;
+    total = x[0];
+    for (let i = 0; i < l-1; i++)
+    {   
+        total = total;
+        total = x[i] / x[i+1];
     }
     solution.innerText = total;
     y = y.toString();
@@ -155,8 +184,10 @@ add.addEventListener('click', () => {
     operator = "add";
     if (previousOperator == "add") { sum(); }
     if (previousOperator == "subtract") { minus(); }
+    if (previousOperator == "multiply") { multiplication(); }
+    if (previousOperator == "divide") { division(); }
     let arr = solution.innerText.split("");
-    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;} // If user enters 2 operators in a row do nothing. 
+    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-" || arr[arr.length-1] == "x" || arr[arr.length-1] == "÷") {return;} // If user enters 2 operators in a row do nothing. 
     
         else {
             solution.innerText += add.innerText;
@@ -174,8 +205,10 @@ subtract.addEventListener('click', () => {
     operator = "subtract";
     if (previousOperator == "add") { sum(); }
     if (previousOperator == "subtract") { minus(); }
+    if (previousOperator == "multiply") { multiplication(); }
+    if (previousOperator == "divide") { division(); }
     let arr = solution.innerText.split("");
-    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;} // If user enters 2 operators in a row do nothing. 
+    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-" || arr[arr.length-1] == "x" || arr[arr.length-1] == "÷") {return;} // If user enters 2 operators in a row do nothing. 
     
         else {
             solution.innerText += subtract.innerText;
@@ -194,8 +227,9 @@ multiply.addEventListener('click', () => {
     if (previousOperator == "add") { sum(); }
     if (previousOperator == "subtract") { minus(); }
     if (previousOperator == "multiply") { multiplication(); }
+    if (previousOperator == "divide") { division(); }
     let arr = solution.innerText.split("");
-    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;} // If user enters 2 operators in a row do nothing. 
+    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-" || arr[arr.length-1] == "x" || arr[arr.length-1] == "÷") {return;} // If user enters 2 operators in a row do nothing. 
     
         else {
             solution.innerText += multiply.innerText;
@@ -207,6 +241,27 @@ multiply.addEventListener('click', () => {
 
 
 
+//Event listener for the divide button
+//////////////////////////////////////////
+divide.addEventListener('click', () => {
+    operator = "divide";
+    if (previousOperator == "add") { sum(); }
+    if (previousOperator == "subtract") { minus(); }
+    if (previousOperator == "multiply") { multiplication(); }
+    if (previousOperator == "divide") { division(); }
+    let arr = solution.innerText.split("");
+    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-" || arr[arr.length-1] == "x" || arr[arr.length-1] == "÷") {return;} // If user enters 2 operators in a row do nothing. 
+    
+        else {
+            solution.innerText += divide.innerText;
+            history.innerText += divide.innerText;
+            }
+            previousOperator = operator;
+})
+////////////////////////////////////////// 
+
+
+
 // Function for equal sign to execute operator
 //////////////////////////////////////////////
 equal.addEventListener('click', () => {
@@ -214,6 +269,8 @@ equal.addEventListener('click', () => {
 
     else if (operator == 'subtract') { minus(); }
 
-    else if (operator == 'multiply') {}
+    else if (operator == 'multiply') { multiplication(); } 
+
+    else if (operator == 'divide') { division(); }
 })
 //////////////////////////////////////////////
