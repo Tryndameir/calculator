@@ -8,6 +8,7 @@ const subtract = document.querySelector('.subtract');
 const multiply = document.querySelector('.multiply');
 const num = document.querySelectorAll('.num');
 let operator = "";
+let previousOperator = operator;
 const equal = document.querySelector('.equal');
 let x = 0;
 let y = 0;
@@ -122,9 +123,11 @@ const minus = function (...args) {
 // Event listener for the add button
 //////////////////////////////////////////
 add.addEventListener('click', () => {
-    if (operator == "add") { sum(); }
-    if (operator == "subtract") { minus(); }
-    if (operator == "") {operator = "add";}
+    operator = "add";
+    console.log(previousOperator)
+    if (previousOperator == "add") { sum(); }
+    if (previousOperator == "subtract") { minus(); }
+    //if (operator == "") { operator = "add"; }
     
     let arr = solution.innerText.split("");
     if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;} // If user enters 2 operators in a row do nothing. 
@@ -142,7 +145,10 @@ add.addEventListener('click', () => {
 //////////////////////////////////////////
 subtract.addEventListener('click', () => {
     operator = "subtract";
-    console.log(operator);
+    console.log(previousOperator);
+    if (operator == "add") { sum(); }
+    if (operator == "subtract") { minus(); }
+    //if (operator == "") { operator = "subtract"; }
     let arr = solution.innerText.split("");
     if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-") {return;} // If user enters 2 operators in a row do nothing. 
     
