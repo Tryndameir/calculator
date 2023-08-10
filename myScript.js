@@ -8,6 +8,8 @@ const subtract = document.querySelector('.subtract');
 const multiply = document.querySelector('.multiply');
 const divide = document.querySelector('.divide');
 const num = document.querySelectorAll('.num');
+const dot = document.querySelector('.dot');
+const del = document.querySelector('.delete');
 let operator = "";
 let previousOperator = operator;
 const equal = document.querySelector('.equal');
@@ -184,6 +186,21 @@ const division = function (...args) {
 
 // Event listener for the add button
 //////////////////////////////////////////
+dot.addEventListener('click', () => {
+    let arr = solution.innerText.split("");
+    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-" || arr[arr.length-1] == "x" || arr[arr.length-1] == "÷") {return;} // If user enters 2 operators in a row do nothing. 
+    
+        else {
+            solution.innerText += add.innerText;
+            history.innerText += add.innerText;
+            }
+            previousOperator = operator;
+})
+//////////////////////////////////////////
+
+
+// Event listener for the add button
+//////////////////////////////////////////
 add.addEventListener('click', () => {
     operator = "add";
     if (previousOperator == "add") { sum(); }
@@ -254,6 +271,10 @@ divide.addEventListener('click', () => {
     if (previousOperator == "multiply") { multiplication(); }
     if (previousOperator == "divide") { division(); }
     let arr = solution.innerText.split("");
+    if (arr[arr.length] == '0') {
+        solution.innerText = "This is ai abuse";
+        return;
+    } 
     if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-" || arr[arr.length-1] == "x" || arr[arr.length-1] == "÷") {return;} // If user enters 2 operators in a row do nothing. 
     
         else {

@@ -84,6 +84,7 @@ body {
 .delete {
     width: 168px;
     font-size: 35px;
+    color: rgb(12, 49, 173);
 }
 
 .equal {
@@ -91,6 +92,6 @@ body {
 }
 
 .dot {
-    color: black;
+    color: white;
     font-size: 65px;
 }
