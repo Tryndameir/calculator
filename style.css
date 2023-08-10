@@ -80,3 +80,17 @@ body {
     border: solid;
     border-color: yellow;
 }
+
+.delete {
+    width: 168px;
+    font-size: 35px;
+}
+
+.equal {
+    width: 168px;
+}
+
+.dot {
+    color: black;
+    font-size: 65px;
+}

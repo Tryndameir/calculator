@@ -100,7 +100,6 @@ const sum = function (...args) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////  7-1-1
 const minus = function (...args) {
     solution.innerText = solution.innerText;
-
     let total = 0;
     x = solution.innerText;
     y = history.innerText;
