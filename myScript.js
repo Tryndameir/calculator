@@ -184,17 +184,11 @@ const division = function (...args) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// Event listener for the add button
+// Event listener for the decimal button
 //////////////////////////////////////////
 dot.addEventListener('click', () => {
-    let arr = solution.innerText.split("");
-    if (arr[arr.length-1] == "+" || arr[arr.length-1] == "-" || arr[arr.length-1] == "x" || arr[arr.length-1] == "÷") {return;} // If user enters 2 operators in a row do nothing. 
-    
-        else {
-            solution.innerText += add.innerText;
-            history.innerText += add.innerText;
-            }
-            previousOperator = operator;
+            solution.innerText += dot.innerText;
+            history.innerText += dot.innerText;
 })
 //////////////////////////////////////////
 
