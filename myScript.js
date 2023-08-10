@@ -193,6 +193,30 @@ dot.addEventListener('click', () => {
 //////////////////////////////////////////
 
 
+// Event listener for the delete button
+//////////////////////////////////////////
+del.addEventListener('click', () => {
+    x = solution.innerText;
+    y = history.innerText;
+    x = Array.from(x);
+    y = Array.from(y);
+    console.log(x);
+    x.pop();
+    y.pop();
+    console.log(x);
+    x = x.toString();
+    y = y.toString();
+    x = x.replaceAll(',', "");
+    y = y.replaceAll(',', "");
+    solution.innerText = x;
+    history.innerText = y;
+    
+    //solution.innerText += dot.innerText;
+    //history.innerText += dot.innerText;
+})
+//////////////////////////////////////////
+
+
 // Event listener for the add button
 //////////////////////////////////////////
 add.addEventListener('click', () => {
